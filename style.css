@@ -1,9 +1,3 @@
-:root {
-    --primary: #2e7d32;
-    --background: #f8f9fa;
-    --text: #212529;
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -12,81 +6,65 @@
 }
 
 body {
-    background-color: var(--background);
-    color: var(--text);
+    background-color: #f0f2f5;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
     min-height: 100vh;
+    padding: 1rem;
+    color: #1c1e21;
 }
 
-header {
-    width: 100%;
-    background-color: var(--primary);
-    color: white;
-    padding: 1.5rem 1rem;
-    text-align: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-header h1 {
-    font-size: 1.5rem;
-    font-weight: 600;
-}
-
-header p {
-    font-size: 0.9rem;
-    opacity: 0.9;
-    margin-top: 4px;
-}
-
-main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 500px;
-    padding: 2rem 1rem;
-}
-
-.camera-container {
-    width: 100%;
-    aspect-ratio: 4/3;
-    background-color: #000;
+.card {
+    background: #ffffff;
+    padding: 2.5rem 1.5rem;
     border-radius: 16px;
-    overflow: hidden;
-    margin-bottom: 2rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-video, canvas {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    max-width: 400px;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    text-align: center;
 }
 
-button {
-    background-color: var(--primary);
+.icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #000;
+}
+
+p {
+    font-size: 0.95rem;
+    color: #65676b;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.btn-whatsapp {
+    background-color: #25D366;
     color: white;
     border: none;
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
+    padding: 1rem;
+    font-size: 1.05rem;
     font-weight: 600;
-    border-radius: 50px;
+    border-radius: 8px;
     cursor: pointer;
     width: 100%;
-    transition: transform 0.2s;
+    transition: background-color 0.2s, transform 0.1s;
+    box-shadow: 0 4px 6px rgba(37, 211, 102, 0.2);
 }
 
-button:active {
-    transform: scale(0.96);
+.btn-whatsapp:active {
+    transform: scale(0.97);
+    background-color: #1ebe57;
 }
 
-#status-message {
+#status-mensagem {
     margin-top: 1rem;
-    font-size: 0.9rem;
-    color: #666;
-    text-align: center;
+    font-size: 0.85rem;
+    color: #d32f2f;
+    margin-bottom: 0;
 }
