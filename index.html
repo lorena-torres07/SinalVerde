@@ -2,26 +2,23 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>SinalVerde - Escanear Rótulo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ponto de Encontro</title>
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="style.css">
-    <meta name="theme-color" content="#2e7d32">
+    <meta name="theme-color" content="#25D366">
 </head>
 <body>
-    <header>
-        <h1>SinalVerde</h1>
-        <p>Análise nutricional simplificada</p>
-    </header>
-
-    <main>
-        <div class="camera-container">
-            <video id="camera-stream" autoplay playsinline></video>
-            <canvas id="snapshot" style="display: none;"></canvas>
-        </div>
+    <main class="card">
+        <div class="icon">📍</div>
+        <h1>Ponto de Encontro</h1>
+        <p>Compartilhe sua localização exata rapidamente com seus amigos.</p>
         
-        <button id="capture-btn">Escanear Rótulo</button>
-        <p id="status-message"></p>
+        <button id="btn-compartilhar" class="btn-whatsapp">
+            Pegar Localização e Enviar
+        </button>
+        
+        <p id="status-mensagem"></p>
     </main>
 
     <script src="app.js"></script>
