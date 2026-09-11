@@ -1,19 +1,13 @@
 {
-  "name": "SinalVerde Scanner",
-  "short_name": "SinalVerde",
+  "name": "Ponto de Encontro",
+  "short_name": "Encontro",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#2e7d32",
-  "description": "Escaneie rótulos de alimentos instantaneamente.",
+  "background_color": "#f0f2f5",
+  "theme_color": "#25D366",
   "icons": [
     {
-      "src": "icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "icon-512.png",
+      "src": "https://cdn-icons-png.flaticon.com/512/3715/3715083.png",
       "sizes": "512x512",
       "type": "image/png"
     }
