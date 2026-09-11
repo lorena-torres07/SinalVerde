@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>SinalVerde - Escanear Rótulo</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <meta name="theme-color" content="#2e7d32">
+</head>
+<body>
+    <header>
+        <h1>SinalVerde</h1>
+        <p>Análise nutricional simplificada</p>
+    </header>
+
+    <main>
+        <div class="camera-container">
+            <video id="camera-stream" autoplay playsinline></video>
+            <canvas id="snapshot" style="display: none;"></canvas>
+        </div>
+        
+        <button id="capture-btn">Escanear Rótulo</button>
+        <p id="status-message"></p>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
