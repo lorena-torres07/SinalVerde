@@ -1,55 +1,46 @@
-// Registro do Service Worker para transformar em PWA
+// Registro do PWA
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js')
-            .then(reg => console.log('Service Worker registrado!', reg))
-            .catch(err => console.error('Erro ao registrar SW', err));
+        navigator.serviceWorker.register('sw.js');
     });
 }
 
-// Acesso à Câmera (Hardware)
-const video = document.getElementById('camera-stream');
-const captureBtn = document.getElementById('capture-btn');
-const canvas = document.getElementById('snapshot');
-const statusMsg = document.getElementById('status-message');
+const btnCompartilhar = document.getElementById('btn-compartilhar');
+const statusMensagem = document.getElementById('status-mensagem');
 
-async function startCamera() {
-    try {
-        // Solicita a câmera traseira (ideal para ler rótulos)
-        const stream = await navigator.mediaDevices.getUserMedia({ 
-            video: { facingMode: 'environment' } 
-        });
-        video.srcObject = stream;
-    } catch (err) {
-        console.error("Erro ao acessar a câmera: ", err);
-        statusMsg.textContent = "Permissão de câmera negada ou dispositivo não suportado.";
-    }
-}
+btnCompartilhar.addEventListener('click', () => {
+    statusMensagem.style.color = '#65676b';
+    statusMensagem.innerText = "Acessando satélites...";
+    btnCompartilhar.disabled = true;
 
-captureBtn.addEventListener('click', () => {
-    if (video.srcObject) {
-        // Tira a "foto"
-        const context = canvas.getContext('2d');
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
-        context.drawImage(video, 0, 0, canvas.width, canvas.height);
-        
-        // UI Feedback
-        video.style.display = 'none';
-        canvas.style.display = 'block';
-        captureBtn.textContent = 'Escanear Novo Rótulo';
-        statusMsg.textContent = "Processando informações nutricionais...";
-        statusMsg.style.color = "#2e7d32";
-        
-        // Reseta após 3 segundos para demonstração
-        setTimeout(() => {
-            video.style.display = 'block';
-            canvas.style.display = 'none';
-            captureBtn.textContent = 'Escanear Rótulo';
-            statusMsg.textContent = "";
-        }, 3000);
+    if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition(
+            (posicao) => {
+                const lat = posicao.coords.latitude;
+                const lon = posicao.coords.longitude;
+                
+                // Cria o link do Google Maps
+                const linkMaps = `https://www.google.com/maps?q=${lat},${lon}`;
+                
+                // Prepara a mensagem para o WhatsApp
+                const texto = `Oi! Estou te esperando aqui neste local exato: ${linkMaps}`;
+                const linkWhatsapp = `https://api.whatsapp.com/send?text=${encodeURIComponent(texto)}`;
+                
+                // Redireciona para o WhatsApp
+                window.location.href = linkWhatsapp;
+                
+                statusMensagem.innerText = "";
+                btnCompartilhar.disabled = false;
+            },
+            (erro) => {
+                statusMensagem.style.color = '#d32f2f';
+                statusMensagem.innerText = "Permissão de localização negada ou GPS inativo.";
+                btnCompartilhar.disabled = false;
+            },
+            { enableHighAccuracy: true } // Força a precisão máxima
+        );
+    } else {
+        statusMensagem.innerText = "Seu dispositivo não suporta GPS.";
+        btnCompartilhar.disabled = false;
     }
 });
-
-// Inicia a câmera ao carregar a página
-startCamera();
